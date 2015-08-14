@@ -8,7 +8,7 @@
   </style>
   <template>
 
-    <iron-signals on-iron-signal-page="open"></iron-signals>
+    <iron-signals on-iron-signal-page="on_page"></iron-signals>
 
     <div id="container" on-link="on_link"></div>
 
@@ -24,6 +24,11 @@
       page.show(event.detail);
     },
 
+    on_page: function (event) {
+      this.clear();
+      this.mount(event.detail);
+    },
+
     clear: function () {
       var container = this.$.container;
       while (container.firstChild) {
@@ -35,11 +40,6 @@
       var container = this.$.container;
       container.appendChild(element);
       this.fire('mount', element);
-    },
-
-    open: function (element) {
-      this.clear();
-      this.mount(element);
     }
 
   });
