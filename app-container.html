@@ -25,8 +25,12 @@
     },
 
     on_page: function (event) {
+      this.open(event.detail);
+    },
+    
+    open: function (page) {
       this.clear();
-      this.mount(event.detail);
+      this.mount(page);
     },
 
     clear: function () {
